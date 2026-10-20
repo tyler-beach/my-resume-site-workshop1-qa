@@ -81,7 +81,7 @@ export const profile = {
 
   projects: [
     {
-      title: 'Campus Resource Finder',
+      title: 'Featured: Campus Resource Finder',
       slug: 'campus-resource-finder',
       summary: 'Class project: a simple site concept that helps students find tutoring and advising services.',
       overview:
