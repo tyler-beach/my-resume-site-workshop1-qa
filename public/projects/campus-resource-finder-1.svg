@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-label="Campus Resource Finder search screen">
+  <rect width="1200" height="720" fill="#f4f4f4"/>
+  <rect width="1200" height="48" fill="#1a1a1a"/>
+  <circle cx="28" cy="24" r="7" fill="#ff5f57"/><circle cx="52" cy="24" r="7" fill="#febc2e"/><circle cx="76" cy="24" r="7" fill="#28c840"/>
+  <rect x="110" y="14" width="420" height="20" rx="10" fill="#333"/>
+  <rect x="40" y="80" width="1120" height="80" rx="8" fill="#000"/>
+  <text x="72" y="130" fill="#ffdb00" font-family="Arial, sans-serif" font-size="28" font-weight="700">Campus Resource Finder</text>
+  <rect x="40" y="190" width="720" height="56" rx="8" fill="#fff" stroke="#d0d0d0"/>
+  <text x="64" y="225" fill="#888" font-family="Arial, sans-serif" font-size="20">Search tutoring, advising, labs&</text>
+  <rect x="780" y="190" width="160" height="56" rx="8" fill="#ffdb00"/>
+  <text x="825" y="225" fill="#000" font-family="Arial, sans-serif" font-size="20" font-weight="700">Search</text>
+  <rect x="40" y="280" width="350" height="180" rx="10" fill="#fff" stroke="#e0e0e0"/>
+  <rect x="60" y="304" width="180" height="18" rx="4" fill="#111"/>
+  <rect x="60" y="340" width="280" height="12" rx="3" fill="#ccc"/>
+  <rect x="60" y="364" width="240" height="12" rx="3" fill="#ddd"/>
+  <rect x="60" y="404" width="110" height="28" rx="6" fill="#ffdb00"/>
+  <rect x="420" y="280" width="350" height="180" rx="10" fill="#fff" stroke="#e0e0e0"/>
+  <rect x="440" y="304" width="200" height="18" rx="4" fill="#111"/>
+  <rect x="440" y="340" width="280" height="12" rx="3" fill="#ccc"/>
+  <rect x="440" y="364" width="240" height="12" rx="3" fill="#ddd"/>
+  <rect x="440" y="404" width="110" height="28" rx="6" fill="#ffdb00"/>
+  <rect x="800" y="280" width="350" height="180" rx="10" fill="#fff" stroke="#e0e0e0"/>
+  <rect x="820" y="304" width="160" height="18" rx="4" fill="#111"/>
+  <rect x="820" y="340" width="280" height="12" rx="3" fill="#ccc"/>
+  <rect x="820" y="364" width="240" height="12" rx="3" fill="#ddd"/>
+  <rect x="820" y="404" width="110" height="28" rx="6" fill="#ffdb00"/>
+  <rect x="40" y="500" width="1120" height="180" rx="10" fill="#fff" stroke="#e0e0e0"/>
+  <text x="72" y="548" fill="#111" font-family="Arial, sans-serif" font-size="22" font-weight="700">Results map · campus buildings</text>
+  <rect x="72" y="580" width="1040" height="70" rx="8" fill="#eee"/>
+</svg>

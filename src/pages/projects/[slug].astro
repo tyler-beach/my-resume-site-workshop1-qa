@@ -1,0 +1,42 @@
+---
+import { profile } from '../../data/profile.js';
+import ProjectDetail from '../../layouts/ProjectDetail.astro';
+import { projectsWithSlugs } from '../../lib/projects.js';
+
+const assetBase = import.meta.env.BASE_URL;
+const pageBase = import.meta.env.BASE_URL;
+
+export function getStaticPaths() {
+  // Import inside getStaticPaths so Astro's isolated path runner always has data.
+  return import('../../data/profile.js').then(({ profile: data }) =>
+    projectsWithSlugs(data.projects ?? []).map((project) => ({
+      params: { slug: project.slug },
+      props: { project },
+    })),
+  );
+}
+
+const { project } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={project.summary || project.overview || project.title} />
+    <meta name="theme-color" content="#000000" />
+    <title>{project.title} · {profile.name}</title>
+    <style>
+      html, body { margin: 0; min-width: 320px; background: #fff; }
+      a { text-underline-offset: 3px; }
+    </style>
+  </head>
+  <body>
+    <ProjectDetail
+      profile={profile}
+      project={project}
+      assetBase={assetBase}
+      pageBase={pageBase}
+    />
+  </body>
+</html>

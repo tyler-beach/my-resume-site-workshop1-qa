@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-label="Campus Resource Finder detail card">
+  <rect width="1200" height="720" fill="#f7f7f7"/>
+  <rect width="1200" height="48" fill="#1a1a1a"/>
+  <circle cx="28" cy="24" r="7" fill="#ff5f57"/><circle cx="52" cy="24" r="7" fill="#febc2e"/><circle cx="76" cy="24" r="7" fill="#28c840"/>
+  <rect x="80" y="90" width="1040" height="540" rx="12" fill="#fff" stroke="#e5e5e5"/>
+  <rect x="80" y="90" width="1040" height="90" rx="12" fill="#000"/>
+  <rect x="80" y="150" width="1040" height="30" fill="#000"/>
+  <text x="120" y="148" fill="#ffdb00" font-family="Arial, sans-serif" font-size="30" font-weight="700">Writing Center · Ablah Library</text>
+  <text x="120" y="230" fill="#333" font-family="Arial, sans-serif" font-size="20">Hours · MonThu 10am7pm · Fri 10am3pm</text>
+  <text x="120" y="270" fill="#555" font-family="Arial, sans-serif" font-size="18">Walk-in tutoring for essays, lab reports, and citation help.</text>
+  <rect x="120" y="320" width="280" height="140" rx="10" fill="#f4f4f4" stroke="#ddd"/>
+  <text x="145" y="370" fill="#111" font-family="Arial, sans-serif" font-size="18" font-weight="700">Book a slot</text>
+  <rect x="145" y="400" width="160" height="36" rx="6" fill="#ffdb00"/>
+  <rect x="430" y="320" width="280" height="140" rx="10" fill="#f4f4f4" stroke="#ddd"/>
+  <text x="455" y="370" fill="#111" font-family="Arial, sans-serif" font-size="18" font-weight="700">Directions</text>
+  <rect x="455" y="400" width="160" height="36" rx="6" fill="#000"/>
+  <rect x="740" y="320" width="300" height="140" rx="10" fill="#f4f4f4" stroke="#ddd"/>
+  <text x="765" y="370" fill="#111" font-family="Arial, sans-serif" font-size="18" font-weight="700">Accessibility notes</text>
+  <rect x="765" y="400" width="200" height="12" rx="3" fill="#ccc"/>
+  <rect x="765" y="424" width="170" height="12" rx="3" fill="#ddd"/>
+</svg>

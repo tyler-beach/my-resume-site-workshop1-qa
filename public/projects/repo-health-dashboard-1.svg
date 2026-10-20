@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-label="Repo health dashboard concept">
+  <rect width="1200" height="720" fill="#f3f3f3"/>
+  <rect width="260" height="720" fill="#000"/>
+  <text x="36" y="70" fill="#ffdb00" font-family="Arial, sans-serif" font-size="22" font-weight="700">Repo Health</text>
+  <text x="36" y="130" fill="#aaa" font-family="Arial, sans-serif" font-size="16">Overview</text>
+  <text x="36" y="170" fill="#fff" font-family="Arial, sans-serif" font-size="16">Repositories</text>
+  <text x="36" y="210" fill="#aaa" font-family="Arial, sans-serif" font-size="16">Alerts</text>
+  <text x="36" y="250" fill="#aaa" font-family="Arial, sans-serif" font-size="16">Owners</text>
+  <rect x="300" y="40" width="280" height="140" rx="10" fill="#fff" stroke="#ddd"/>
+  <text x="330" y="90" fill="#666" font-family="Arial, sans-serif" font-size="16">Open alerts</text>
+  <text x="330" y="140" fill="#111" font-family="Arial, sans-serif" font-size="42" font-weight="700">18</text>
+  <rect x="600" y="40" width="280" height="140" rx="10" fill="#fff" stroke="#ddd"/>
+  <text x="630" y="90" fill="#666" font-family="Arial, sans-serif" font-size="16">Repos without owner</text>
+  <text x="630" y="140" fill="#111" font-family="Arial, sans-serif" font-size="42" font-weight="700">4</text>
+  <rect x="900" y="40" width="250" height="140" rx="10" fill="#fff" stroke="#ddd"/>
+  <text x="930" y="90" fill="#666" font-family="Arial, sans-serif" font-size="16">Checks failing</text>
+  <text x="930" y="140" fill="#111" font-family="Arial, sans-serif" font-size="42" font-weight="700">7</text>
+  <rect x="300" y="220" width="850" height="440" rx="10" fill="#fff" stroke="#ddd"/>
+  <text x="330" y="270" fill="#111" font-family="Arial, sans-serif" font-size="20" font-weight="700">Repository status</text>
+  <rect x="330" y="310" width="790" height="50" rx="6" fill="#f7f7f7"/>
+  <rect x="330" y="380" width="790" height="50" rx="6" fill="#f7f7f7"/>
+  <rect x="330" y="450" width="790" height="50" rx="6" fill="#f7f7f7"/>
+  <rect x="330" y="520" width="790" height="50" rx="6" fill="#f7f7f7"/>
+  <rect x="350" y="326" width="90" height="18" rx="4" fill="#ffdb00"/>
+  <rect x="350" y="396" width="90" height="18" rx="4" fill="#ccc"/>
+  <rect x="350" y="466" width="90" height="18" rx="4" fill="#ffdb00"/>
+  <rect x="350" y="536" width="90" height="18" rx="4" fill="#ccc"/>
+</svg>

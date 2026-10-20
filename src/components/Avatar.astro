@@ -1,0 +1,21 @@
+---
+const { profile, assetBase = '/', size = 'md', class: className = '' } = Astro.props;
+const initials = profile.name
+  .split(' ')
+  .map((word) => word[0])
+  .filter(Boolean)
+  .slice(0, 2)
+  .join('')
+  .toUpperCase();
+const photo = typeof profile.photo === 'string' ? profile.photo.trim() : '';
+const photoSrc = photo
+  ? photo.startsWith('http')
+    ? photo
+    : `${assetBase}${photo.replace(/^\//, '')}`
+  : '';
+---
+{photoSrc ? (
+  <img class:list={['avatar', `avatar-${size}`, className]} src={photoSrc} alt={`Photo of ${profile.name}`} width="160" height="160" />
+) : (
+  <div class:list={['avatar', 'avatar-initials', `avatar-${size}`, className]} aria-hidden="true">{initials}</div>
+)}

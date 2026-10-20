@@ -1,0 +1,74 @@
+---
+import { projectPageHref, withSlug } from '../lib/projects.js';
+const { project: raw, assetBase = '/', pageBase = assetBase } = Astro.props;
+const project = withSlug(raw);
+const detailHref = projectPageHref(project, pageBase);
+---
+<article class="project-row">
+  <div class="project-row-main">
+    <h3>{project.title}</h3>
+    <p>{project.summary}</p>
+    {project.skills?.length > 0 && (
+      <p class="project-row-skills">{project.skills.join(' · ')}</p>
+    )}
+  </div>
+  <div class="project-row-links">
+    {detailHref && <a href={detailHref}>Details</a>}
+    {project.demo && (
+      <a href={project.demo} target="_blank" rel="noreferrer">Demo</a>
+    )}
+    {project.link && (
+      <a href={project.link} target="_blank" rel="noreferrer">Repo</a>
+    )}
+  </div>
+</article>
+
+<style>
+.project-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px 24px;
+  align-items: flex-start;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--pc-line, #dbe3eb);
+}
+.project-row-main {
+  min-width: 0;
+  flex: 1;
+}
+.project-row h3 {
+  margin: 0 0 4px;
+  font: 600 1.05rem/1.3 system-ui, sans-serif;
+}
+.project-row p {
+  margin: 0;
+  color: var(--pc-muted, #64748b);
+  font: 400 0.9rem/1.5 system-ui, sans-serif;
+}
+.project-row-skills {
+  margin-top: 6px !important;
+  color: var(--pc-accent, #0f766e) !important;
+  font-size: 0.78rem !important;
+}
+.project-row-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+.project-row-links a {
+  font: 600 0.85rem/1 system-ui, sans-serif;
+  color: var(--pc-accent, #0f766e);
+  text-decoration: none;
+}
+.project-row-links a:hover {
+  text-decoration: underline;
+}
+@media (max-width: 640px) {
+  .project-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+</style>

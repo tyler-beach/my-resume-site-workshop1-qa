@@ -1,0 +1,90 @@
+/* Shared ATS / print rules — applied by each theme layout */
+@media print {
+  @page {
+    margin: 0.6in;
+  }
+
+  html, body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 11pt !important;
+    line-height: 1.35 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  a {
+    color: #000 !important;
+    text-decoration: none !important;
+  }
+
+  img,
+  .avatar,
+  .avatar-initials {
+    display: none !important;
+  }
+
+  /* Flatten multi-column resume layouts for ATS parsers */
+  .theme-professional,
+  .theme-student,
+  .theme-emerging {
+    display: block !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+    color: #000 !important;
+    box-shadow: none !important;
+  }
+
+  .theme-professional .pro-side,
+  .theme-professional .pro-main,
+  .theme-student .st-grid,
+  .theme-student .st-course-grid,
+  .theme-student .st-project-grid,
+  .theme-emerging .em-section,
+  .theme-emerging .em-projects {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    grid-template-columns: 1fr !important;
+    background: transparent !important;
+    border: 0 !important;
+    padding: 0 !important;
+    margin: 0 0 12pt !important;
+    color: #000 !important;
+  }
+
+  .theme-professional .pro-side {
+    color: #000 !important;
+  }
+
+  .theme-professional .pro-side a,
+  .theme-professional .pro-side p,
+  .theme-professional .pro-side .label,
+  .theme-professional .pro-side .role {
+    color: #000 !important;
+  }
+
+  h1, h2, h3 {
+    color: #000 !important;
+    page-break-after: avoid;
+  }
+
+  h2 {
+    border-bottom: 1px solid #000 !important;
+    padding-bottom: 2pt !important;
+    margin: 14pt 0 6pt !important;
+    font-size: 12pt !important;
+    letter-spacing: 0.04em !important;
+    text-transform: uppercase !important;
+  }
+
+  section, article {
+    break-inside: avoid;
+  }
+}

@@ -1,0 +1,533 @@
+---
+/**
+ * Start Bootstrap–style resume shell (WSU black + Shocker Yellow).
+ * Empty sections are hidden — fill only what you have in profile.js.
+ */
+import Avatar from '../components/Avatar.astro';
+import ExperienceDetails from '../components/ExperienceDetails.astro';
+import PrintControls from '../components/PrintControls.astro';
+import { projectPageHref, withSlug } from '../lib/projects.js';
+
+const { profile, assetBase = '/', pageBase = assetBase } = Astro.props;
+
+const education = Array.isArray(profile.education)
+  ? profile.education
+  : profile.education
+    ? [profile.education]
+    : [];
+const coursework = profile.coursework ?? [];
+const activities = profile.activities ?? [];
+const experience = profile.experience ?? [];
+const projects = profile.projects ?? [];
+const certifications = profile.certifications ?? [];
+const honors = profile.honors ?? [];
+const interests = profile.interests ?? [];
+const learning = profile.learning ?? [];
+const careerHighlights = profile.careerHighlights ?? [];
+
+const resumeHref = profile.resume
+  ? profile.resume.startsWith('http')
+    ? profile.resume
+    : `${assetBase}${profile.resume.replace(/^\//, '')}`
+  : '';
+
+/** Fixed section order for every stage — omit only when the profile has no data. */
+const sectionOrder = [
+  'about',
+  'experience',
+  'education',
+  'coursework',
+  'activities',
+  'projects',
+  'highlights',
+  'skills',
+  'awards',
+  'interests',
+];
+
+const labels = {
+  about: 'About',
+  experience: 'Experience',
+  education: 'Education',
+  coursework: 'Coursework',
+  activities: 'Activities',
+  projects: 'Projects',
+  skills: 'Skills',
+  highlights: 'Highlights',
+  awards: 'Awards',
+  interests: 'Interests',
+};
+
+const has = {
+  about: true,
+  experience: experience.length > 0,
+  education: education.length > 0,
+  coursework: coursework.length > 0,
+  activities: activities.length > 0,
+  projects: projects.length > 0,
+  skills: (profile.skills ?? []).length > 0,
+  highlights: careerHighlights.length > 0,
+  awards: certifications.length > 0 || honors.length > 0,
+  interests: interests.length > 0 || learning.length > 0,
+};
+const sections = sectionOrder.filter((id) => has[id]);
+---
+<div class="resume-shell">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Saira+Extra+Condensed:wght@500;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <PrintControls />
+
+  <nav class="resume-nav no-print" aria-label="Resume sections">
+    <div class="resume-nav-inner">
+      <Avatar profile={profile} assetBase={assetBase} size="lg" class="resume-photo" />
+      <ul>
+        {sections.map((id) => (
+          <li><a href={`#${id}`}>{labels[id]}</a></li>
+        ))}
+      </ul>
+    </div>
+  </nav>
+
+  <div class="resume-main">
+    <section class="resume-about" id="about">
+      <h1>
+        {profile.name.split(' ').map((part, i, arr) => (
+          i === arr.length - 1
+            ? <span class="resume-name-accent">{part}</span>
+            : <>{part}{' '}</>
+        ))}
+      </h1>
+      <p class="resume-contact">
+        <span>{profile.location}</span>
+        <span aria-hidden="true"> · </span>
+        <a href={`mailto:${profile.email}`}>{profile.email}</a>
+        <span aria-hidden="true"> · </span>
+        <a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+        <span aria-hidden="true"> · </span>
+        <a href={profile.github} target="_blank" rel="noreferrer">GitHub</a>
+        {resumeHref && (
+          <>
+            <span aria-hidden="true"> · </span>
+            <a class="no-print" href={resumeHref} target="_blank" rel="noreferrer">Resume PDF</a>
+          </>
+        )}
+      </p>
+      <p class="resume-role">{profile.role}</p>
+      {profile.badge && <p class="resume-badge">{profile.badge}</p>}
+      <p class="resume-lead">{profile.tagline}</p>
+      <p>{profile.about}</p>
+    </section>
+
+    {sections.includes('experience') && (
+      <section id="experience">
+        <h2>Experience</h2>
+        {experience.map((item) => (
+          <article class="resume-entry">
+            <div class="resume-entry-top">
+              <div>
+                <h3>{item.title}</h3>
+                <p class="resume-org">{item.organization}</p>
+              </div>
+              <time>{item.date}</time>
+            </div>
+            <ExperienceDetails item={item} />
+          </article>
+        ))}
+      </section>
+    )}
+
+    {sections.includes('highlights') && (
+      <section id="highlights">
+        <h2>Highlights</h2>
+        <ul class="resume-list">
+          {careerHighlights.map((item) => <li>{item}</li>)}
+        </ul>
+      </section>
+    )}
+
+    {sections.includes('education') && (
+      <section id="education">
+        <h2>Education</h2>
+        {education.map((item) => (
+          <article class="resume-entry">
+            <div class="resume-entry-top">
+              <div>
+                <h3>{item.school}</h3>
+                <p class="resume-org">{item.degree}</p>
+              </div>
+              <time>{item.detail}</time>
+            </div>
+          </article>
+        ))}
+      </section>
+    )}
+
+    {sections.includes('coursework') && (
+      <section id="coursework">
+        <h2>Relevant Coursework</h2>
+        {coursework.map((item) => (
+          <article class="resume-entry">
+            <h3>{item.title}</h3>
+            <p>{item.detail}</p>
+          </article>
+        ))}
+      </section>
+    )}
+
+    {sections.includes('activities') && (
+      <section id="activities">
+        <h2>Activities</h2>
+        {activities.map((item) => (
+          <article class="resume-entry">
+            <h3>{item.title}</h3>
+            <p class="resume-org">{item.organization}</p>
+            <p>{item.detail}</p>
+          </article>
+        ))}
+      </section>
+    )}
+
+    {sections.includes('projects') && (
+      <section id="projects">
+        <h2>Projects</h2>
+        {projects.map((raw) => {
+          const project = withSlug(raw);
+          const detailHref = projectPageHref(project, pageBase);
+          return (
+            <article class="resume-entry">
+              <h3>
+                {detailHref ? (
+                  <a href={detailHref}>{project.title}</a>
+                ) : (
+                  project.title
+                )}
+              </h3>
+              <p>{project.summary}</p>
+              {project.skills?.length > 0 && (
+                <p class="resume-meta">{project.skills.join(' · ')}</p>
+              )}
+              <p class="resume-meta no-print project-entry-links">
+                {detailHref && <a href={detailHref}>Project page</a>}
+                {detailHref && (project.link || project.demo) && <span aria-hidden="true"> · </span>}
+                {project.demo && (
+                  <a href={project.demo} target="_blank" rel="noreferrer">Demo</a>
+                )}
+                {project.demo && project.link && <span aria-hidden="true"> · </span>}
+                {project.link && (
+                  <a href={project.link} target="_blank" rel="noreferrer">Repository</a>
+                )}
+              </p>
+            </article>
+          );
+        })}
+      </section>
+    )}
+
+    {sections.includes('skills') && (
+      <section id="skills">
+        <h2>Skills</h2>
+        <ul class="resume-skills">
+          {profile.skills.map((skill) => <li>{skill}</li>)}
+        </ul>
+      </section>
+    )}
+
+    {sections.includes('awards') && (
+      <section id="awards">
+        <h2>Awards & Certifications</h2>
+        <ul class="resume-list">
+          {certifications.map((item) => (
+            <li>{item.name}{item.issuer ? ` · ${item.issuer}` : ''}</li>
+          ))}
+          {honors.map((item) => (
+            <li>{item.title}{item.detail ? ` · ${item.detail}` : ''}</li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {sections.includes('interests') && (
+      <section id="interests">
+        <h2>Interests</h2>
+        {interests.length > 0 && <p>{interests.join(' · ')}</p>}
+        {learning.length > 0 && <p class="resume-meta">Currently learning: {learning.join(' · ')}</p>}
+      </section>
+    )}
+  </div>
+</div>
+
+<style>
+.resume-shell {
+  /* Wichita State primary palette: Black + Shocker Yellow */
+  --accent: #ffdb00;
+  --accent-ink: #000000;
+  --ink: #1a1a1a;
+  --muted: #5c5c5c;
+  --line: #e5e5e5;
+  --side: #000000;
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background: #fff;
+  color: var(--ink);
+  font: 400 16px/1.6 "Open Sans", "Segoe UI", sans-serif;
+}
+.resume-shell * { box-sizing: border-box; }
+
+.resume-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 17rem;
+  height: 100vh;
+  background: var(--side);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem;
+}
+.resume-nav-inner {
+  width: 100%;
+  text-align: center;
+}
+:global(.resume-photo) {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 0.5rem solid rgba(255, 255, 255, 0.2);
+  margin: 0 auto 2rem;
+  background: rgba(0, 0, 0, 0.15);
+  display: block;
+}
+:global(.avatar-initials.resume-photo) {
+  display: grid;
+  place-items: center;
+  font: 700 2rem "Saira Extra Condensed", sans-serif;
+  color: #fff;
+  letter-spacing: 0.08em;
+}
+.resume-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.resume-nav a {
+  display: block;
+  padding: 0.55rem 0;
+  color: rgba(255, 255, 255, 0.78);
+  text-decoration: none;
+  font: 700 0.95rem/1 "Saira Extra Condensed", sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.resume-nav a:hover,
+.resume-nav a:focus {
+  color: var(--accent);
+}
+
+.resume-main {
+  margin-left: 17rem;
+  width: calc(100% - 17rem);
+  padding: 3.5rem 3.5rem 5rem;
+  max-width: 72rem;
+}
+
+.resume-about h1 {
+  margin: 0 0 0.6rem;
+  font: 700 clamp(3rem, 7vw, 5.2rem)/1 "Saira Extra Condensed", sans-serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.resume-name-accent { color: var(--accent); }
+.resume-contact {
+  margin: 0 0 1.25rem;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+.resume-contact a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 3px;
+}
+.resume-contact a:hover { color: #000; }
+.resume-role {
+  margin: 0 0 0.35rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.resume-badge {
+  margin: 0 0 1rem;
+  color: var(--ink);
+  font-weight: 700;
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  background: var(--accent);
+}
+.resume-lead {
+  margin: 0 0 0.75rem;
+  font-size: 1.15rem;
+  color: var(--ink);
+}
+
+.resume-main section {
+  padding: 2.75rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.resume-main section:last-child { border-bottom: 0; }
+.resume-main h2 {
+  margin: 0 0 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--line);
+  font: 700 2.2rem/1.1 "Saira Extra Condensed", sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.resume-entry { margin: 0 0 1.75rem; }
+.resume-entry:last-child { margin-bottom: 0; }
+.resume-entry-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: baseline;
+  margin-bottom: 0.35rem;
+}
+.resume-entry h3 {
+  margin: 0;
+  font: 700 1.45rem/1.25 "Saira Extra Condensed", sans-serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.resume-entry h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+.resume-entry h3 a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+}
+.resume-org {
+  margin: 0.15rem 0 0;
+  color: var(--muted);
+  font-weight: 600;
+}
+.resume-entry time {
+  flex-shrink: 0;
+  color: var(--muted);
+  font-weight: 700;
+  white-space: nowrap;
+}
+.resume-entry p { margin: 0.35rem 0 0; }
+.resume-meta {
+  margin-top: 0.4rem !important;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.project-entry-links a {
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 3px;
+}
+.project-entry-links a:hover { color: #000; }
+
+:global(.resume-shell .exp-summary) {
+  margin: 0.4rem 0 0;
+  color: var(--ink);
+}
+:global(.resume-shell .exp-highlights) {
+  margin: 0.5rem 0 0;
+  padding-left: 1.2rem;
+  color: var(--ink);
+}
+
+.resume-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.resume-skills li {
+  padding: 0.4rem 0.7rem;
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-radius: 0.3rem;
+  font: 700 0.85rem/1 "Open Sans", sans-serif;
+}
+
+.resume-list {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+.resume-list li { margin-bottom: 0.45rem; }
+
+@media (max-width: 900px) {
+  .resume-shell { display: block; }
+  .resume-nav {
+    position: static;
+    width: 100%;
+    height: auto;
+    padding: 1.5rem 1rem 1rem;
+  }
+  .resume-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.25rem 0.85rem;
+    margin-top: 1rem;
+  }
+  :global(.resume-photo) { margin-bottom: 0.75rem; }
+  .resume-main {
+    margin-left: 0;
+    width: 100%;
+    padding: 2rem 1.25rem 4rem;
+  }
+  .resume-entry-top { flex-direction: column; gap: 0.2rem; }
+}
+
+@media print {
+  .resume-shell {
+    display: block !important;
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .resume-nav { display: none !important; }
+  .resume-main {
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+    padding: 0 !important;
+  }
+  .resume-name-accent,
+  .resume-org,
+  .resume-badge,
+  .resume-contact a,
+  .resume-entry time { color: #000 !important; background: transparent !important; }
+  .resume-skills li {
+    background: transparent !important;
+    color: #000 !important;
+    border: 1px solid #000;
+    padding: 0.15rem 0.4rem;
+  }
+  .resume-main section {
+    border: 0 !important;
+    padding: 0 0 10pt !important;
+  }
+  .resume-main h2 {
+    border-bottom: 1px solid #000 !important;
+    font-size: 14pt !important;
+    margin: 12pt 0 6pt !important;
+  }
+}
+</style>

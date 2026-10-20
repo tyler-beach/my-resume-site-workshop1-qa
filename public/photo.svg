@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="640" viewBox="0 0 640 640" role="img" aria-label="Placeholder portrait">
+  <rect width="640" height="640" fill="#dbe7a1"/>
+  <circle cx="320" cy="240" r="110" fill="#71804f"/>
+  <ellipse cx="320" cy="520" rx="190" ry="160" fill="#71804f"/>
+  <text x="320" y="620" text-anchor="middle" font-family="Georgia, serif" font-size="28" fill="#35402b">Replace with photo.jpg</text>
+</svg>

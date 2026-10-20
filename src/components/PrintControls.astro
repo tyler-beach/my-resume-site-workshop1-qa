@@ -1,0 +1,57 @@
+---
+/** Compact screen control — print collapses to a clean ATS PDF. */
+---
+<div class="print-bar no-print">
+  <button type="button" class="print-btn" data-print-resume title="Save a clean single-column PDF">
+    Print / ATS PDF
+  </button>
+</div>
+
+<style is:global>
+.print-bar {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 40;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+.print-btn {
+  appearance: none;
+  border: 1px solid rgba(23, 23, 23, 0.14);
+  background: rgba(255, 255, 255, 0.94);
+  color: #171717;
+  padding: 10px 14px;
+  border-radius: 999px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(10px);
+  font: 600 12px/1 "Open Sans", "Segoe UI", sans-serif;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+}
+.print-btn:hover {
+  background: #000;
+  border-color: #000;
+  color: #ffdb00;
+}
+@media print {
+  @page { margin: 0.6in; }
+  .print-bar, .no-print { display: none !important; }
+  html, body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 11pt !important;
+    line-height: 1.35 !important;
+  }
+  a { color: #000 !important; text-decoration: none !important; }
+  img, .avatar, .avatar-initials { display: none !important; }
+}
+</style>
+
+<script is:inline>
+  document.querySelectorAll('[data-print-resume]').forEach(function (btn) {
+    btn.addEventListener('click', function () { window.print(); });
+  });
+</script>

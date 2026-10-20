@@ -1,0 +1,10 @@
+---
+const { item } = Astro.props;
+const highlights = item.highlights ?? [];
+---
+{item.summary && <p class="exp-summary">{item.summary}</p>}
+{highlights.length > 0 && (
+  <ul class="exp-highlights">
+    {highlights.map((point) => <li>{point}</li>)}
+  </ul>
+)}

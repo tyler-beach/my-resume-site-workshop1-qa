@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-label="Findings spreadsheet preview">
+  <rect width="1200" height="720" fill="#ececec"/>
+  <rect x="60" y="60" width="1080" height="600" rx="8" fill="#fff" stroke="#ccc"/>
+  <rect x="60" y="60" width="1080" height="56" fill="#000"/>
+  <text x="90" y="98" fill="#ffdb00" font-family="Arial, sans-serif" font-size="24" font-weight="700">Findings Report Helper · weekly export</text>
+  <rect x="60" y="116" width="1080" height="40" fill="#f0f0f0"/>
+  <text x="90" y="142" fill="#444" font-family="Arial, sans-serif" font-size="15" font-weight="700">ID</text>
+  <text x="180" y="142" fill="#444" font-family="Arial, sans-serif" font-size="15" font-weight="700">Severity</text>
+  <text x="340" y="142" fill="#444" font-family="Arial, sans-serif" font-size="15" font-weight="700">App</text>
+  <text x="520" y="142" fill="#444" font-family="Arial, sans-serif" font-size="15" font-weight="700">Owner</text>
+  <text x="720" y="142" fill="#444" font-family="Arial, sans-serif" font-size="15" font-weight="700">Status</text>
+  <g font-family="Arial, sans-serif" font-size="15" fill="#222">
+    <text x="90" y="200">F-104</text><text x="180" y="200">High</text><text x="340" y="200">Portal</text><text x="520" y="200">Squad A</text><text x="720" y="200">Open</text>
+    <text x="90" y="250">F-109</text><text x="180" y="250">Med</text><text x="340" y="250">Claims</text><text x="520" y="250">Squad B</text><text x="720" y="250">In progress</text>
+    <text x="90" y="300">F-112</text><text x="180" y="300">Low</text><text x="340" y="300">Admin</text><text x="520" y="300">Platform</text><text x="720" y="300">Closed</text>
+    <text x="90" y="350">F-118</text><text x="180" y="350">High</text><text x="340" y="350">Portal</text><text x="520" y="350">Squad A</text><text x="720" y="350">Open</text>
+  </g>
+  <rect x="90" y="420" width="980" height="180" rx="8" fill="#fafafa" stroke="#e5e5e5"/>
+  <text x="120" y="480" fill="#111" font-family="monospace" font-size="16">python findings_helper.py --week 2026-W12 --out review.xlsx</text>
+  <text x="120" y="530" fill="#666" font-family="Arial, sans-serif" font-size="16">Groups by severity · flags stale owners · ready for Monday review.</text>
+</svg>
